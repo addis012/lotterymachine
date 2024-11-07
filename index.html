@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lottery Machine Animation</title>
+    <!-- Include the jQuery library and the Lottery Machine plugin -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://www.jaypung.com/js/luckyball/lotteryMachine.min.js"></script>
+
+    <!-- Add some basic styling -->
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #222;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+        #lotteryMachine {
+            width: 300px;
+            height: 300px;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lottery Machine</h1>
+    <!-- Div element for the lottery machine animation -->
+    <div id="lotteryMachine"></div>
+    <button onclick="start()">Start Lottery</button>
+
+    <!-- Script to initialize and start the lottery machine animation -->
+    <script>
+        // Initialize the Lottery Machine plugin
+        $(function() {
+            var machine = $("#lotteryMachine").lotteryMachine({
+                containerRadius: 150, // Size of the lottery machine
+                waitInterval: 1000,   // Time interval between number draws
+                playSound: true,      // Play sound effect
+                callback: function(data) {
+                    alert("Winning Numbers: " + data); // Alert when animation finishes
+                }
+            });
+        });
+
+        // Function to start the lottery animation
+        function start() {
+            // Example: Run the animation with numbers 0, 1, 2, and 3
+            $("#lotteryMachine").lotteryMachine('run', "0123");
+        }
+    </script>
+</body>
+</html>
